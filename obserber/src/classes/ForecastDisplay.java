@@ -14,9 +14,9 @@ public class ForecastDisplay implements Observer, DisplayElement {
     }
 
     @Override
-    public void update(float temp, float humidity, float pressure) {
+    public void update() {
         previousPres = currentPres;
-        currentPres = pressure;
+        currentPres = weatherData.getPres();
         display();
     }
 

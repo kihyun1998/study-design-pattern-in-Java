@@ -17,7 +17,8 @@ public class StatisticDisplay implements Observer, DisplayElement {
     }
 
     @Override
-    public void update(float temp, float humidity, float pressure) {
+    public void update() {
+        float temp = weatherData.getTemp();
         tempSum += temp;
         cnt++;
         if(maxTemp<temp){

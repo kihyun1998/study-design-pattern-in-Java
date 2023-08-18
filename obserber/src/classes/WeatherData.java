@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public class WeatherData implements Subject {
     private ArrayList<Observer> observers;
+
+
     private float temp;
     private  float hum;
     private  float pres;
@@ -28,7 +30,7 @@ public class WeatherData implements Subject {
     @Override
     public void notifyObservers() {
         for (Observer observer: observers){
-            observer.update(temp,hum,pres);
+            observer.update();
         }
     }
 
@@ -43,5 +45,16 @@ public class WeatherData implements Subject {
         measurementsChanged();
     }
 
+    public float getTemp() {
+        return temp;
+    }
+
+    public float getHum() {
+        return hum;
+    }
+
+    public float getPres() {
+        return pres;
+    }
 
 }

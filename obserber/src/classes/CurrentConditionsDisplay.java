@@ -13,9 +13,9 @@ public class CurrentConditionsDisplay implements Observer, DisplayElement {
         weatherData.registerObserver(this);
     }
 
-    public void update(float temp, float hum, float pres){
-        this.temp = temp;
-        this.hum =hum;
+    public void update(){
+        this.temp = weatherData.getTemp();
+        this.hum = weatherData.getHum();
         display();
     }
 
