@@ -1,16 +1,16 @@
 package classes;
 
 public class PizzaStore {
-    PizzaFactory pizzaFactory;
+    SimplePizzaFactory factory;
 
-    public PizzaStore(PizzaFactory pizzaFactory){
-        this.pizzaFactory = pizzaFactory;
+    public PizzaStore(SimplePizzaFactory factory) {
+        this.factory = factory;
     }
 
-    public Pizza orderPizza(String type){
+    public Pizza orderPizza(String type) {
         Pizza pizza;
 
-        pizza = pizzaFactory.createPizza(type);
+        pizza = factory.createPizza(type);
 
         pizza.prepare();
         pizza.bake();
