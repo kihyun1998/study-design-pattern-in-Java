@@ -1,15 +1,17 @@
-import classes.factory.ChicagoPizzaFactory;
-import classes.factory.NYPizzaFactory;
+import classes.pizzas.Pizza;
+import classes.stores.ChicagoPizzaStore;
+import classes.stores.NYPizzaStore;
 import classes.stores.PizzaStore;
 
 public class Main {
     public static void main(String[] args) {
-        NYPizzaFactory nyFactory = new NYPizzaFactory();
-        PizzaStore nyStore = new PizzaStore(nyFactory);
-        nyStore.orederPizza("Veggi");
+        PizzaStore nyStore = new NYPizzaStore();
+        PizzaStore chicagoStore = new ChicagoPizzaStore();
 
-        ChicagoPizzaFactory chicagoPizzaFactory = new ChicagoPizzaFactory();
-        PizzaStore chicagoStore = new PizzaStore(chicagoPizzaFactory);
-        chicagoStore.orederPizza("Veggi");
+        Pizza pizza = nyStore.orderPizza("cheese");
+        System.out.println("Eden's order is " +pizza.getName() + "\n");
+
+        pizza = chicagoStore.orderPizza("cheese");
+        System.out.println("Joel's order is "+pizza.getName()+"\n");
     }
 }
