@@ -1,29 +1,25 @@
 package classes.pizzas;
 
+import classes.ingredient.cheese_package.Cheese;
+import classes.ingredient.clams_package.Clams;
+import classes.ingredient.dough_package.Dough;
+import classes.ingredient.pepperoni_package.Pepperoni;
+import classes.ingredient.sauce_package.Sauce;
+import classes.ingredient.veggies_package.Veggies;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Pizza {
-    public String name;
-    public String dough;
-    public String sauce;
-    public List<String> toppings = new ArrayList<String>();
+    String name;
+    Dough dough;
+    Sauce sauce;
+    Veggies veggies[];
+    Cheese cheese;
+    Pepperoni pepperoni;
+    Clams clams;
 
-    public String getName() {
-        return name;
-    }
-
-    public void prepare() {
-        System.out.println("=====Preparing " + name+"=====");
-        System.out.println("Making dough ...");
-        System.out.println("Put the sauce ...");
-        System.out.println("Put the toppings");
-        System.out.println("*********************");
-        for (String topping : toppings){
-            System.out.println(topping+" ");
-        }
-        System.out.println("*********************");
-    }
+    abstract void prepare();
 
     public void bake() {
         System.out.println("Baking " + name);
@@ -35,5 +31,15 @@ public abstract class Pizza {
 
     public void box() {
         System.out.println("Boxing " + name);
+    }
+    void setName(String name){
+        this.name = name;
+    }
+
+    String getName(){
+        return name;
+    }
+    public String toString(){
+        return name;
     }
 }
