@@ -1,23 +1,30 @@
 package classes.stores;
 
-import classes.pizzas.NewYork.NYStyleCheesePizza;
-import classes.pizzas.NewYork.NYStyleClamPizza;
-import classes.pizzas.NewYork.NYStylePepperoniPizza;
-import classes.pizzas.NewYork.NYStyleVeggiePizza;
+import classes.factory.NYPizzaIngredientFactory;
+import classes.factory.PizzaIngredientFactory;
+import classes.pizzas.CheesePizza;
 import classes.pizzas.Pizza;
+import classes.pizzas.VeggiePizza;
 
 
 public class NYPizzaStore extends PizzaStore{
-    // createPizza는 팩토리 메소드
-    Pizza createPizza(String type) {
-        if (type.equals("cheese")) {
-            return new NYStyleCheesePizza();
-        } else if (type.equals("pepperoni")) {
-            return new NYStylePepperoniPizza();
-        } else if (type.equals("clam")) {
-            return new NYStyleClamPizza();
-        } else if (type.equals("veggie")) {
-            return new NYStyleVeggiePizza();
-        } else return null;
+    protected Pizza createPizza(String item){
+        Pizza pizza = null;
+        PizzaIngredientFactory ingredientFactory = new NYPizzaIngredientFactory();
+        String local = "New York";
+        if (item.equals("cheese")){
+            pizza = new CheesePizza(ingredientFactory);
+            pizza.setName(local,"Cheese");
+        }else if (item.equals("veggie")){
+            pizza = new VeggiePizza(ingredientFactory);
+            pizza.setName(local,"Veggie");
+        }else if (item.equals("clam")){
+            pizza = new VeggiePizza(ingredientFactory);
+            pizza.setName(local,"Clam");
+        }else if (item.equals("pepperoni")){
+            pizza = new VeggiePizza(ingredientFactory);
+            pizza.setName(local,"Pepperoni");
+        }
+        return pizza;
     }
 }

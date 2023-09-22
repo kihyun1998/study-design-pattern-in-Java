@@ -12,6 +12,8 @@ import java.util.List;
 
 public abstract class Pizza {
     String name;
+
+
     Dough dough;
     Sauce sauce;
     Veggies veggies[];
@@ -19,7 +21,7 @@ public abstract class Pizza {
     Pepperoni pepperoni;
     Clams clams;
 
-    abstract void prepare();
+    public abstract void prepare();
 
     public void bake() {
         System.out.println("Baking " + name);
@@ -32,13 +34,15 @@ public abstract class Pizza {
     public void box() {
         System.out.println("Boxing " + name);
     }
-    void setName(String name){
-        this.name = name;
+    public void setName(String local,String name){
+        this.name = String.format("%s style %s Pizza",local,name);
     }
-
-    String getName(){
+    public String getName(){
         return name;
     }
+
+
+
     public String toString(){
         return name;
     }
